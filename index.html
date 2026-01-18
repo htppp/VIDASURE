@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://assets.calendly.com https://calendly.com https://js.stripe.com; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://assets.calendly.com; 
+        font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; 
+        img-src 'self' data: https://www.facebook.com https://*.stripe.com; 
+        frame-src 'self' https://calendly.com https://m.stripe.network https://js.stripe.com https://hooks.stripe.com https://www.facebook.com https://connect.facebook.net; 
+        connect-src 'self' https://formspree.io https://calendly.com https://api.calendly.com https://www.facebook.com https://connect.facebook.net https://stripe.com https://api.stripe.com https://m.stripe.network https://*.stripe.com https://hook.us2.make.com;
+    ">
+    
+    <title>VIDASURE | Ingeniería Patrimonial</title>
+   
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1421849212878409');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1421849212878409&ev=PageView&noscript=1"
+    /></noscript>
+    <style>
+        :root {
+            --navy: #002855;    /* Azul Rey / Monterrey */
+            --orange: #F68D2E;  /* Naranja Vidasure */
+            --white: #ffffff;
+            --gray-bg: #f5f7fa;
+            --text-dark: #1a202c;
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 40px rgba(0, 40, 85, 0.15);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Manrope', sans-serif; 
+            background: var(--white); 
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- UTILIDADES --- */
+        .hover-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .hover-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+
+        /* HEADER */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 5%;
+            position: sticky; top: 0; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--orange);
+        }
+        .logo-img { height: 50px; }
+        
+        .btn-header {
+            background: var(--navy); color: white; padding: 10px 25px;
+            border-radius: 6px; text-decoration: none; font-weight: 700;
+            font-size: 0.9rem; transition: 0.3s; cursor: pointer; border: none;
+        }
+        .btn-header:hover { background: var(--orange); transform: translateY(-2px); }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 50px 5%;
+            background: linear-gradient(135deg, var(--navy) 0%, #001a38 100%);
+            min-height: 90vh;
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center; 
+            gap: 50px; position: relative; color: white;
+        }
+
+        .hero-text { flex: 1; min-width: 320px; max-width: 600px; }
+        
+        .badge-hero {
+            background: rgba(255, 255, 255, 0.1); color: var(--orange);
+            padding: 6px 14px; border-radius: 30px; font-weight: 700;
+            font-size: 0.8rem; display: inline-block; margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 { font-size: 2.8rem; line-height: 1.15; color: white; font-weight: 800; margin-bottom: 20px; }
+        .hero span { color: var(--orange); }
+        .hero p { font-size: 1.15rem; color: #e0e0e0; margin-bottom: 30px; line-height: 1.7; }
+        
+        .hero-features { list-style: none; margin-bottom: 30px; }
+        .hero-features li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-weight: 600; color: #f0f0f0; }
+        .hero-features i { color: var(--orange); }
+
+        /* QUIZ CARD HERO */
+        .quiz-card {
+            flex: 1; min-width: 350px; max-width: 450px;
+            background: var(--white); color: var(--text-dark);
+            padding: 35px; border-radius: 16px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--orange);
+            position: relative; z-index: 10;
+            min-height: 550px; 
+        }
+        
+        #quiz-content { display: block; animation: fadeIn 0.5s; }
+        #calendar-content { display: none; animation: fadeIn 0.5s; text-align: center; padding-top: 20px; }
+
+        .progress-container { width: 100%; background: #eee; height: 6px; border-radius: 10px; margin-bottom: 25px; }
+        .progress-bar { height: 100%; background: var(--orange); width: 25%; border-radius: 10px; transition: 0.4s; }
+
+        .step { display: none; animation: fadeIn 0.4s; }
+        .step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .question-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 15px; display: block; }
+        .option-label {
+            display: flex; align-items: center; padding: 12px 15px; margin-bottom: 10px;
+            border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: 0.2s;
+            background: #f8fafc; font-weight: 500; font-size: 0.95rem; color: #333;
+        }
+        .option-label:hover { border-color: var(--orange); background: #fffbf0; transform: translateX(3px); }
+        .option-input { margin-right: 12px; accent-color: var(--orange); transform: scale(1.2); }
+        .input-field { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+        .input-field:focus { border-color: var(--orange); outline: none; }
+        .btn-submit {
+            width: 100%; padding: 16px; background: var(--orange); color: white;
+            border: none; border-radius: 8px; font-weight: 800; font-size: 1rem;
+            cursor: pointer; transition: 0.3s; margin-top: 10px; text-transform: uppercase;
+        }
+        .btn-submit:hover { background: #d9751e; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* --- NUEVA SECCIÓN DE VALIDACIÓN (ESTILOS MEJORADOS) --- */
+        .validation-section {
+            padding: 60px 5%;
+            background: linear-gradient(to bottom, #f8f9fa 0%, #eef2f6 100%);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .validation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .val-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        .val-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 40, 85, 0.1); }
+        
+        /* Estilos específicos Azul y Naranja */
+        .val-card-orange { border-top: 6px solid var(--orange); }
+        .val-card-blue { border-top: 6px solid var(--navy); }
+        
+        .val-icon { font-size: 2.5rem; margin-bottom: 20px; display: inline-block; }
+        .val-title { font-size: 1.4rem; font-weight: 800; color: var(--navy); margin-bottom: 15px; }
+        .val-text { font-size: 1rem; color: #555; line-height: 1.7; }
+        .val-tag { 
+            display: inline-block; padding: 5px 12px; border-radius: 20px; 
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px;
+        }
+
+        /* CARTA DE VENTAS */
+        .letter-section { padding: 80px 5% 40px 5%; background: #fff; text-align: center; }
+        .letter-container {
+            max-width: 800px; margin: 0 auto; border: 2px dashed #ddd; padding: 40px; border-radius: 10px; background: #fafafa;
+        }
+        .letter-title { font-family: serif; font-style: italic; font-size: 1.5rem; color: #555; margin-bottom: 20px; }
+        .letter-text { font-size: 1.1rem; color: #333; line-height: 1.8; margin-bottom: 20px; text-align: left; }
+        .letter-highlight { background: #fff3cd; padding: 0 5px; font-weight: bold; }
+        .letter-bold { font-weight: 800; color: var(--navy); }
+
+        /* PUNTOS DE DOLOR */
+        .pain-points-section { padding: 40px 5% 80px 5%; background: #fff; }
+        .pain-container { max-width: 900px; margin: 0 auto; }
+        .pain-list { list-style: none; padding: 0; }
+        .pain-item { display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-start; font-size: 1.05rem; color: #444; line-height: 1.6; }
+        .pain-icon { color: var(--orange); font-size: 1.2rem; margin-top: 5px; flex-shrink: 0; }
+        .pain-cta-box { background: var(--navy); color: white; padding: 40px; border-radius: 15px; text-align: center; margin-top: 50px; }
+
+        /* POR QUÉ NOSOTROS */
+        .why-us-section { padding: 80px 5%; background: var(--gray-bg); text-align: center; }
+        .section-header h2 { font-size: 2.2rem; color: var(--navy); font-weight: 800; margin-bottom: 15px; }
+        .section-header p { color: #666; font-size: 1.1rem; max-width: 700px; margin: 0 auto 50px auto; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .benefit-item { text-align: left; padding: 25px; background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .b-icon { font-size: 2.5rem; color: var(--orange); margin-bottom: 20px; }
+        .benefit-item h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--navy); }
+        .benefit-item p { color: #666; font-size: 0.95rem; }
+
+        /* PRODUCTOS */
+        .products-section { padding: 100px 5%; background: var(--white); text-align: center; }
+        .products-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px; }
+        .product-card {
+            background: white; border-radius: 20px; width: 340px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08); 
+            overflow: hidden; border: 1px solid #eee;
+            display: flex; flex-direction: column;
+        }
+        .p-header { padding: 30px; color: white; text-align: center; }
+        .header-mujer { background: linear-gradient(135deg, #E91E63, #ff6090); }
+        .header-retiro { background: linear-gradient(135deg, #002855, #004080); }
+        .header-alfa { background: linear-gradient(135deg, #2196F3, #64b5f6); }
+        .p-icon-circle {
+            background: rgba(255,255,255,0.2); width: 70px; height: 70px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; margin: 0 auto 15px auto;
+            font-size: 2rem; color: white;
+        }
+        .p-body { padding: 30px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .p-title { font-weight: 800; font-size: 1.4rem; color: white; margin-bottom: 5px; }
+        .p-subtitle { font-size: 0.85rem; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 1px; }
+        .p-desc { font-size: 1rem; color: #555; line-height: 1.6; margin-bottom: 25px; }
+        .p-btn { padding: 12px; width: 100%; border-radius: 8px; font-weight: 700; text-decoration: none; text-align: center; display: block; border: 2px solid; transition: 0.3s; cursor: pointer; }
+        .btn-mujer { border-color: #E91E63; color: #E91E63; background: transparent; }
+        .btn-mujer:hover { background: #E91E63; color: white; }
+        .btn-retiro { border-color: var(--navy); color: var(--navy); background: transparent; }
+        .btn-retiro:hover { background: var(--navy); color: white; }
+        .btn-alfa { border-color: #2196F3; color: #2196F3; background: transparent; }
+        .btn-alfa:hover { background: #2196F3; color: white; }
+
+        /* ASESOR */
+        .advisor-section {
+            padding: 100px 5%; background: var(--navy);
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 80px; color: white;
+        }
+        .advisor-card-container { position: relative; width: 350px; }
+        .advisor-photo { 
+            width: 100%; border-radius: 20px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            border: 5px solid rgba(255,255,255,0.1);
+        }
+        .advisor-badge {
+            position: absolute; bottom: 30px; right: -20px;
+            background: white; padding: 10px 20px; border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--navy);
+            font-size: 0.9rem;
+        }
+        .advisor-text { max-width: 550px; }
+        .advisor-text h2 { color: white; font-size: 2.5rem; font-weight: 800; margin-bottom: 5px; line-height: 1.2; }
+        .advisor-role { color: var(--orange); font-size: 1.1rem; font-weight: 700; margin-bottom: 25px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        .advisor-text p { color: #e0e0e0; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
+        .smnyl-logo-container {
+            margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; gap: 15px;
+        }
+        .smnyl-logo-img { height: 50px; width: auto; display: block; background: white; padding: 8px; border-radius: 8px; }
+
+        /* TESTIMONIOS */
+        .reviews-section { padding: 80px 5%; background: var(--white); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .review-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid #eee; }
+        .stars { color: #FFC107; margin-bottom: 15px; }
+
+        /* FOOTER */
+        footer { background: #FFFFFF; padding: 60px 5% 30px 5%; text-align: center; color: #666; border-top: 1px solid #eee; }
+        .footer-logo { height: 55px; margin-bottom: 25px; }
+        .social-icons a { 
+            display: inline-flex; width: 45px; height: 45px; border-radius: 50%;
+            background: var(--navy); color: white; justify-content: center; align-items: center;
+            margin: 0 8px; transition: 0.3s; font-size: 1.2rem;
+        }
+        .social-icons a:hover { background: var(--orange); transform: translateY(-3px); }
+
+        /* POPUP MODAL */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 40, 85, 0.95); z-index: 2000;
+            display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background: white; width: 95%; max-width: 500px; padding: 30px;
+            border-radius: 15px; position: relative; max-height: 90vh; overflow-y: auto; border-top: 6px solid var(--orange);
+        }
+        #popup-quiz-content { display: block; }
+        #popup-calendar-content { display: none; text-align: center; padding-top: 20px; }
+        .close-modal { position: absolute; top: 10px; right: 15px; font-size: 2rem; cursor: pointer; color: #999; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Vidasure" class="logo-img">
+        <button onclick="openPopup()" class="btn-header">Iniciar Diagnóstico</button>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-text">
+            <span class="badge-hero">PLANEACIÓN DE RETIRO</span>
+            
+            <h1>Maximiza tu Patrimonio: <br> Capitalización Inteligente y <span style="color:var(--orange)">Blindaje Fiscal</span></h1>
+            
+            <p>Diseñamos tu estrategia a la medida: <b>Multiplica tu capital</b> con Interés Compuesto (Meta $10M) o <b>Recupera Impuestos</b> del SAT (Art. 151). Todo con el respaldo de Seguros Monterrey New York Life.</p>
+            
+            <ul class="hero-features">
+                <li><i class="fas fa-chart-line"></i> <b>Jóvenes:</b> Proyecciones de hasta $10 Millones.</li>
+                <li><i class="fas fa-file-invoice-dollar"></i> <b>Adultos:</b> Deducibilidad de impuestos al 100%.</li>
+                <li><i class="fas fa-shield-alt"></i> <b>Seguridad:</b> Ahorro protegido en UDIS o Dólares.</li>
+            </ul>
+        </div>
+
+        <div class="quiz-card">
+            <div id="quiz-content">
+                <div style="text-align:center; margin-bottom:20px;">
+                    <div style="font-weight:800; color:var(--navy); font-size:1.3rem; line-height: 1.3;">👇 Solicita tu Asesoría Gratuita y Personalizada</div>
+                    <div style="font-size:0.9rem; color:#666; margin-top:5px;">Descubre tu estrategia ideal en 45 segundos</div>
+                </div>
+                <div class="progress-container"><div class="progress-bar" id="barHero"></div></div>
+
+                <form id="mainForm">
+                    <input type="hidden" name="fuente" value="Hero Section">
+                    
+                    <div class="step active" id="hStep1">
+                        <label class="question-title">1. ¿Qué edad tienes?</label>
+                        <label class="option-label" onclick="nextStepHero(2)"><input type="radio" name="edad" value="25-30" class="option-input"> 25 a 30 años</label>
+                        <label class="option-label" onclick="nextStepHero(2)"><input type="radio" name="edad" value="31-40" class="option-input"> 31 a 40 años</label>
+                        <label class="option-label" onclick="nextStepHero(2)"><input type="radio" name="edad" value="41-50" class="option-input"> 41 a 50 años</label>
+                        <label class="option-label" onclick="nextStepHero(2)"><input type="radio" name="edad" value="50+" class="option-input"> Más de 50 años</label>
+                    </div>
+                    <div class="step" id="hStep2">
+                        <label class="question-title">2. Ingreso Mensual</label>
+                        <label class="option-label" onclick="nextStepHero(3)"><input type="radio" name="ingreso" value="20k-30k" class="option-input"> $20,000 - $30,000</label>
+                        <label class="option-label" onclick="nextStepHero(3)"><input type="radio" name="ingreso" value="30k-50k" class="option-input"> $30,000 - $50,000</label>
+                        <label class="option-label" onclick="nextStepHero(3)"><input type="radio" name="ingreso" value="50k+" class="option-input"> Más de $50,000</label>
+                    </div>
+                    <div class="step" id="hStep3">
+                        <label class="question-title">3. Ahorro Mensual Posible</label>
+                        <label class="option-label" onclick="nextStepHero(4)"><input type="radio" name="ahorro" value="2500" class="option-input"> $2,500 - $4,000</label>
+                        <label class="option-label" onclick="nextStepHero(4)"><input type="radio" name="ahorro" value="5000" class="option-input"> $5,000 - $8,000</label>
+                        <label class="option-label" onclick="nextStepHero(4)"><input type="radio" name="ahorro" value="10000+" class="option-input"> Más de $10,000</label>
+                    </div>
+                    <div class="step" id="hStep4">
+                        <label class="question-title" style="text-align:center; color:var(--orange);">¡Perfil Pre-Aprobado! ✅</label>
+                        <input type="text" name="nombre" class="input-field" placeholder="Nombre Completo" required>
+                        <input type="tel" name="telefono" class="input-field" placeholder="WhatsApp (10 dígitos)" required>
+                        <input type="email" name="email" class="input-field" placeholder="Correo Electrónico" required>
+                        <button type="submit" class="btn-submit">QUIERO PROTEGER MI FUTURO ➔</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="calendar-content">
+                <h3 style="color:var(--navy); margin-bottom:10px;">¡Datos Recibidos! 🎉</h3>
+                <p style="font-size:0.9rem; color:#666; margin-bottom:15px;">Selecciona tu horario abajo para la asesoría:</p>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/turetirosmnyl65/30min?month=2025-12" style="min-width:300px;height:450px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="validation-section">
+        <div class="validation-grid">
+            
+            <div class="val-card val-card-orange">
+                <div class="val-tag" style="background:#fff3e0; color:var(--orange);">Menores de 35 años</div>
+                <h3 class="val-title"><i class="fas fa-chart-line val-icon" style="color:var(--orange)"></i><br>El Poder del Tiempo</h3>
+                <p class="val-text">Vienes del anuncio de los <b>$10 Millones</b>. Aquí usamos el <b>Interés Compuesto</b> a tu favor. El tiempo es tu mayor activo: pequeñas sumas hoy crean una fortuna mañana.</p>
+            </div>
+
+            <div class="val-card val-card-blue">
+                <div class="val-tag" style="background:#e3f2fd; color:var(--navy);">Mayores de 35 años</div>
+                <h3 class="val-title"><i class="fas fa-file-invoice-dollar val-icon" style="color:var(--navy)"></i><br>Estrategia Fiscal</h3>
+                <p class="val-text">Vienes buscando <b>Deducibilidad</b>. Aquí aplicamos el <b>Art. 151 de la LISR</b>. Convierte tus impuestos en patrimonio y haz que el SAT financie parte de tu retiro.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="letter-section">
+        <div class="letter-container">
+            <div class="letter-title">Querido Lector...</div>
+            <p class="letter-text">Si ya tienes un plan sólido para tu retiro, con ahorro constante, beneficios fiscales y una estrategia clara para generar ingresos en el futuro… <span class="letter-bold">ESTA PÁGINA NO ES PARA TI.</span></p>
+            <p class="letter-text">Pero si aún te sientes lejos de alcanzar esa tranquilidad financiera, si cada año pasa y no sabes cómo ni dónde empezar a ahorrar de forma inteligente…</p>
+            <p class="letter-text">Si ves cómo <span class="letter-highlight">el dinero se te va en gastos</span> y no en construir el futuro que mereces… Entonces sigue leyendo.</p>
+            <p class="letter-text">Este mensaje es para quienes están cansados de postergar su bienestar, y están listos para transformar la incertidumbre del mañana en un <span class="letter-bold">plan claro y seguro de ahorro para el retiro.</span></p>
+        </div>
+    </section>
+
+    <section class="pain-points-section">
+        <div class="pain-container">
+            <h3 style="text-align:center; color:var(--navy); margin-bottom:40px; font-size:1.8rem;">¿Te identificas con alguno de estos puntos?</h3>
+            <ul class="pain-list">
+                <li class="pain-item"><i class="fas fa-circle pain-icon"></i><div>Has intentado ahorrar por tu cuenta, pero sientes que el dinero simplemente no alcanza para construir el retiro que sueñas.</div></li>
+                <li class="pain-item"><i class="fas fa-circle pain-icon"></i><div>Quieres dejar de improvisar con tus finanzas y comenzar a tomar decisiones estratégicas para asegurar tu bienestar a largo plazo.</div></li>
+                <li class="pain-item"><i class="fas fa-circle pain-icon"></i><div>Te has sentido frustrado al ver pasar los años sin un plan claro, y temes llegar a la jubilación sin suficiente respaldo económico.</div></li>
+                <li class="pain-item"><i class="fas fa-circle pain-icon"></i><div>Deseas una estrategia probada, respaldada por las mejores aseguradoras, que te permita ahorrar mes a mes con beneficios fiscales y rendimientos reales.</div></li>
+                <li class="pain-item"><i class="fas fa-circle pain-icon"></i><div>Ya has probado otras opciones de inversión o ahorro, pero sigues sin resultados claros y te preguntas qué estás haciendo mal.</div></li>
+                <li class="pain-item"><i class="fas fa-circle pain-icon"></i><div>Quieres una guía sencilla, personalizada y confiable para tomar el control de tu futuro financiero sin correr riesgos innecesarios.</div></li>
+            </ul>
+            <div class="pain-cta-box">
+                <h3>¿Estás listo para descubrir una estrategia que pocos conocen?</h3>
+                <button onclick="openPopup()" class="btn-submit" style="display:inline-block; width:auto; padding:15px 40px; font-size:1.2rem;">¡SÍ! QUIERO PERSONALIZAR MI PLAN</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us-section">
+        <div class="section-header">
+            <h2>Porqué Contratar con Nosotros</h2>
+            <p>Te ayudamos a diseñar un plan realista, personalizado y respaldado por compañías líderes en el mundo.</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-item hover-card">
+                <i class="fas fa-handshake b-icon"></i>
+                <h3>Confianza Total</h3>
+                <p>Estarás respaldado por la experiencia de Seguros Monterrey New York Life.</p>
+            </div>
+            <div class="benefit-item hover-card">
+                <i class="fas fa-random b-icon"></i>
+                <h3>Diversidad</h3>
+                <p>Tienes acceso a distintos portafolios de inversión (Dólares y UDIS).</p>
+            </div>
+            <div class="benefit-item hover-card">
+                <i class="fas fa-money-bill-wave b-icon"></i>
+                <h3>Liquidez</h3>
+                <p>Opciones con retiros parciales antes del vencimiento para emergencias.</p>
+            </div>
+            <div class="benefit-item hover-card">
+                <i class="fas fa-chart-line b-icon"></i>
+                <h3>Beneficios Fiscales</h3>
+                <p>Elige deducibilidad y diferimiento de impuestos según el Art. 151 del SAT.</p>
+            </div>
+            <div class="benefit-item hover-card">
+                <i class="fas fa-user-check b-icon"></i>
+                <h3>Acompañamiento hasta el final</h3>
+                <p>No eres una póliza más. Te guiamos durante toda la vida del plan, asegurando que se cumpla lo prometido.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <div class="section-header">
+            <h2>Soluciones a tu Medida</h2>
+            <p style="color:#666;">Protección integral para cada etapa de tu vida.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card hover-card">
+                <div class="p-header header-retiro">
+                    <div class="p-icon-circle"><i class="fas fa-coins"></i></div>
+                    <div class="p-title">Seguro de Retiro</div>
+                    <div class="p-subtitle">Imagina Ser</div>
+                </div>
+                <div class="p-body">
+                    <p class="p-desc">Garantiza un futuro digno con ahorros deducibles de impuestos y rendimientos superiores a la inflación. Tu "Yo del futuro" te lo agradecerá.</p>
+                    <button onclick="openPopup()" class="p-btn btn-retiro">COTIZAR RETIRO</button>
+                </div>
+            </div>
+
+            <div class="product-card hover-card">
+                <div class="p-header header-alfa">
+                    <div class="p-icon-circle"><i class="fas fa-heartbeat"></i></div>
+                    <div class="p-title">Gastos Médicos</div>
+                    <div class="p-subtitle">Alfa Medical Flex</div>
+                </div>
+                <div class="p-body">
+                    <p class="p-desc">Acceso a la mejor medicina privada de México sin descapitalizarte. Atención de primer nivel ante enfermedades y accidentes graves.</p>
+                    <button onclick="openPopup()" class="p-btn btn-alfa">COTIZAR SALUD</button>
+                </div>
+            </div>
+
+            <div class="product-card hover-card">
+                <div class="p-header header-mujer">
+                    <div class="p-icon-circle"><i class="fas fa-female"></i></div>
+                    <div class="p-title">Vida Mujer</div>
+                    <div class="p-subtitle">Protección Femenina</div>
+                </div>
+                <div class="p-body">
+                    <p class="p-desc">El seguro diseñado para nosotras. Ahorro con protección exclusiva ante padecimientos de la mujer, embarazo y complicaciones.</p>
+                    <button onclick="openPopup()" class="p-btn btn-mujer">COTIZAR VIDA MUJER</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advisor-section">
+        <div class="advisor-card-container hover-card">
+            <img src="asesor.jpg" alt="Jesus Becerril" class="advisor-photo">
+            <div class="advisor-badge">
+                <i class="fas fa-check-circle" style="color:#25D366;"></i> Verificado
+            </div>
+        </div>
+        
+        <div class="advisor-text">
+            <h2>Jesus Becerril</h2>
+            <span class="advisor-role">Estratega Patrimonial Senior</span>
+            
+            <p><b>No soy solo un vendedor de seguros, soy tu arquitecto financiero.</b></p>
+            <p>En un mundo económico volátil, no puedes dejar tu futuro a la suerte. Mi misión en <b>Vidasure</b> es brindarte la estructura exacta que tu familia necesita: blindaje contra inflación, eficiencia fiscal y liquidez estratégica.</p>
+            <p>Con el respaldo de <b>Seguros Monterrey New York Life</b>, no solo prometemos bienestar, lo garantizamos por contrato.</p>
+            
+            <div class="smnyl-logo-container">
+                <span style="font-size:0.8rem; color:rgba(255,255,255,0.7); font-weight:700;">SOCIO COMERCIAL:</span>
+                <img src="logo-smnyl.png" alt="Seguros Monterrey New York Life" class="smnyl-logo-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section">
+        <h2 style="text-align:center; font-size:2rem; font-weight:800; margin-bottom:50px; color:var(--navy);">Casos de Éxito Reales</h2>
+        <div class="reviews-grid">
+            <div class="review-card hover-card">
+                <div class="stars">★★★★★</div>
+                <p class="r-text">"Gracias a que contraté SeguBeca a tiempo, hoy mis hijos cumplieron su sueño sin deudas. Uno es Médico y el otro Administrador. El mejor legado que les pude dar."</p>
+                <span class="r-author">Familia con SeguBeca (Caso Real)</span>
+            </div>
+
+            <div class="review-card hover-card">
+                <div class="stars">★★★★★</div>
+                <p class="r-text">"Ya no sufro por dinero. Con mi ingreso mensual garantizado me compré auto nuevo y ahora solo me dedico a pasear y disfrutar con mi esposa. ¡Esto es vida!"</p>
+                <span class="r-author">Toño R. (Jubilado Feliz)</span>
+            </div>
+
+            <div class="review-card hover-card">
+                <div class="stars">★★★★★</div>
+                <p class="r-text">"Cuando mi papá falleció, nos dejó protegidas. Su póliza se dividió 50% para mi mamá y 50% para mí. Gracias a ese respaldo, hoy soy Abogada."</p>
+                <span class="r-author">Eva (Beneficiaria de Vida)</span>
+            </div>
+
+            <div class="review-card hover-card">
+                <div class="stars">★★★★★</div>
+                <p class="r-text">"Tras un accidente que me causó invalidez, recibí mi suma asegurada al momento. Y lo mejor: a mis 65 años empezaré a recibir un ingreso vitalicio hasta los 99."</p>
+                <span class="r-author">Evangelina (Protección Total)</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="logo.png" alt="Vidasure" class="footer-logo">
+        <p style="margin-bottom:20px;">Tu futuro financiero comienza hoy.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/vidasureseguros/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/vidasuree/" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p style="margin-top:30px; font-size:0.8rem;">&copy; 2025 Vidasure Agente de Seguros.<br>Todos los derechos reservados.</p>
+    </footer>
+
+    <div class="modal-overlay" id="popupModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePopup()">&times;</span>
+            
+            <div id="popup-quiz-content">
+                <div style="text-align:center; margin-bottom:20px;">
+                    <h3 style="color:var(--navy); font-size:1.4rem;">¡Espera! No te vayas sin tu Plan</h3>
+                    <p style="font-size:0.9rem; color:#666;">Completa el diagnóstico rápido.</p>
+                </div>
+                <div class="progress-container"><div class="progress-bar" id="barModal"></div></div>
+                
+                <form id="modalForm">
+                    <input type="hidden" name="fuente" value="Popup Modal">
+                    
+                    <div class="step active" id="mStep1">
+                        <label class="question-title">1. Rango de Edad</label>
+                        <label class="option-label" onclick="nextStepModal(2)"><input type="radio" name="edad" value="20-30" class="option-input"> 20-30 años</label>
+                        <label class="option-label" onclick="nextStepModal(2)"><input type="radio" name="edad" value="31-40" class="option-input"> 31-40 años</label>
+                        <label class="option-label" onclick="nextStepModal(2)"><input type="radio" name="edad" value="41-50" class="option-input"> 41-50 años</label>
+                         <label class="option-label" onclick="nextStepModal(2)"><input type="radio" name="edad" value="50+" class="option-input"> Más de 50</label>
+                    </div>
+                    <div class="step" id="mStep2">
+                        <label class="question-title">2. Ingreso Mensual</label>
+                        <label class="option-label" onclick="nextStepModal(3)"><input type="radio" name="ingreso" value="<20k" class="option-input"> Menos de $20k</label>
+                        <label class="option-label" onclick="nextStepModal(3)"><input type="radio" name="ingreso" value="20k-50k" class="option-input"> $20k - $50k</label>
+                        <label class="option-label" onclick="nextStepModal(3)"><input type="radio" name="ingreso" value=">50k" class="option-input"> Más de $50k</label>
+                    </div>
+                    <div class="step" id="mStep3">
+                        <label class="question-title">3. Ahorro Mensual</label>
+                        <label class="option-label" onclick="nextStepModal(4)"><input type="radio" name="ahorro" value="2500" class="option-input"> $2,500 - $4,000</label>
+                        <label class="option-label" onclick="nextStepModal(4)"><input type="radio" name="ahorro" value="5000" class="option-input"> $5,000 - $8,000</label>
+                         <label class="option-label" onclick="nextStepModal(4)"><input type="radio" name="ahorro" value="10000+" class="option-input"> +$10,000</label>
+                    </div>
+                    <div class="step" id="mStep4">
+                        <label class="question-title" style="text-align:center; color:var(--orange);">¡Perfil Aprobado! ✅</label>
+                        <input type="text" name="nombre" class="input-field" placeholder="Nombre" required>
+                        <input type="tel" name="telefono" class="input-field" placeholder="WhatsApp" required>
+                        <input type="email" name="email" class="input-field" placeholder="Correo" required>
+                        <button type="submit" class="btn-submit">ENVIAR SOLICITUD</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="popup-calendar-content">
+                <h3 style="color:var(--navy);">¡Agenda tu llamada! 👇</h3>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/turetirosmnyl65/30min?month=2025-12" style="min-width:300px;height:400px;"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let userIsBusy = false;
+
+        // --- HERO LOGIC ---
+        function nextStepHero(stepNum) {
+            userIsBusy = true;
+            setTimeout(() => {
+                document.getElementById('hStep1').classList.remove('active');
+                document.getElementById('hStep2').classList.remove('active');
+                document.getElementById('hStep3').classList.remove('active');
+                document.getElementById('hStep' + stepNum).classList.add('active');
+                const bar = document.getElementById('barHero');
+                if(stepNum === 2) bar.style.width = "50%";
+                if(stepNum === 3) bar.style.width = "75%";
+                if(stepNum === 4) bar.style.width = "100%";
+            }, 300);
+        }
+
+        const heroForm = document.getElementById('mainForm');
+        heroForm.addEventListener('input', () => { userIsBusy = true; });
+        heroForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = heroForm.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = "Enviando...";
+            const data = new FormData(heroForm);
+
+            // AQUI ESTA LA MAGIA: Enviamos a MAKE en secreto
+            fetch("https://hook.us2.make.com/zrs9sdi92yql8h41wyb1ofhk7da7p33i", {
+                method: 'POST', body: data
+            }).then(response => {
+                if (response.ok) {
+                    // Lead de Meta (Pixel)
+                    fbq('track', 'Lead');
+
+                    // OCULTAR FORMULARIO Y MOSTRAR CALENDARIO
+                    document.getElementById('quiz-content').style.display = 'none';
+                    document.getElementById('calendar-content').style.display = 'block';
+                } else {
+                    alert("Error de conexión. Intenta de nuevo.");
+                    btn.innerText = originalText;
+                }
+            }).catch(error => {
+                console.error("Error:", error);
+                // Si falla, mostramos el calendario igual para no perder al cliente
+                document.getElementById('quiz-content').style.display = 'none';
+                document.getElementById('calendar-content').style.display = 'block';
+            });
+        });
+
+        // --- POPUP LOGIC ---
+        function openPopup() { document.getElementById('popupModal').classList.add('active'); }
+        function closePopup() { document.getElementById('popupModal').classList.remove('active'); }
+
+        setTimeout(() => { if (!userIsBusy) openPopup(); }, 30000); // Smart Timer
+
+        function nextStepModal(stepNum) {
+            setTimeout(() => {
+                document.getElementById('mStep1').classList.remove('active');
+                document.getElementById('mStep2').classList.remove('active');
+                document.getElementById('mStep3').classList.remove('active');
+                document.getElementById('mStep' + stepNum).classList.add('active');
+                const bar = document.getElementById('barModal');
+                if(stepNum === 2) bar.style.width = "50%";
+                if(stepNum === 3) bar.style.width = "75%";
+                if(stepNum === 4) bar.style.width = "100%";
+            }, 300);
+        }
+
+        const modalForm = document.getElementById('modalForm');
+        modalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = modalForm.querySelector('button');
+            btn.innerText = "Enviando...";
+            const data = new FormData(modalForm);
+
+            fetch("https://hook.us2.make.com/zrs9sdi92yql8h41wyb1ofhk7da7p33i", {
+                method: 'POST', body: data
+            }).then(response => {
+                if (response.ok) {
+                    fbq('track', 'Lead');
+                    document.getElementById('popup-quiz-content').style.display = 'none';
+                    document.getElementById('popup-calendar-content').style.display = 'block';
+                }
+            });
+        });
+        
+        let script = document.createElement('script');
+        script.src = "https://assets.calendly.com/assets/external/widget.js";
+        script.async = true;
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
